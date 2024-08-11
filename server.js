@@ -2,15 +2,18 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
+const playerRoutes = require('./routes/players');
+
 // Middleware
+app.use(express.json());
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 })
 
-app.get('/', (req, res) => {
-  res.json({message: 'Welcome To Speedy Turtles!'});
-})
+// Routes
+app.use('/api/players', playerRoutes);
 
 const PORT  = process.env.PORT || 4000;
 
