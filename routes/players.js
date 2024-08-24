@@ -2,7 +2,9 @@ const express = require('express');
 const {
    createPlayer,
    getPlayers,
-   getPlayer
+   getPlayer,
+   deletePlayer,
+   updatePlayer
 } = require('../controllers/playerController')
 
 const router = express.Router();
@@ -17,13 +19,9 @@ router.get('/:id', getPlayer)
 router.post('/', createPlayer)
 
 // DELETE a single player
-router.delete('/:id', (req, res) => {
-   res.json({message: 'Delete a single player'})
-})
+router.delete('/:id', deletePlayer)
 
 // UPDATE a single player
-router.put('/:id', (req, res) => {
-   res.json({message: 'Update a single player'})
-})
+router.put('/:id', updatePlayer)
 
 module.exports = router;
