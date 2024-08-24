@@ -1,22 +1,20 @@
 const express = require('express');
+const {
+   createPlayer,
+   getPlayers,
+   getPlayer
+} = require('../controllers/playerController')
 
 const router = express.Router();
 
-
 // GET all players
-router.get('/', (req, res) => {
-   res.json({message: 'GET all players'})
-})
+router.get('/', getPlayers);
 
 // GET a single player
-router.get('/:id', (req, res) => {
-   res.json({message: 'GET a single player'})
-})
+router.get('/:id', getPlayer)
 
-// POST a single player
-router.post('/:id', (req, res) => {
-   res.json({message: 'POST a single player'})
-})
+// CREATE a single player
+router.post('/', createPlayer)
 
 // DELETE a single player
 router.delete('/:id', (req, res) => {
