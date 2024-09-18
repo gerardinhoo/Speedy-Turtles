@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 
 
@@ -13,6 +14,8 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 })
+
+app.use(cors());
 
 // Routes
 app.use('/api/players', playerRoutes);
